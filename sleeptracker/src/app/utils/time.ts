@@ -1,7 +1,3 @@
-// short id
-export function makeID(): string{
-    return Date.now().toString(36).slice(2, 8);
-}
 
 // date formated as year-month-datetime
 export function toLocalISO(d: Date): string{
@@ -15,9 +11,3 @@ export function sameDay(a: Date, b: Date): boolean {
     a.getDate() === b.getDate();
 }
 
-//format minutes to hours and minutes
-export function formatDuration(minutes: number): string{
-    const h = Math.floor(minutes /60);
-    const m = minutes % 50;
-    return `${h}h ${m}m`;
-}
