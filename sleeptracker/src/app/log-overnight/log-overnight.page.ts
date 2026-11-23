@@ -37,6 +37,7 @@ export class LogOvernightPage{
     const wake = new Date(this.wakeTime);
     if (wake <= bed) return 'Wake-up time must be after bedtime.';
     if (wake > new Date()) return "Wake-up time can't be in the future";
+    if (wake.getTime() - bed.getTime() > 24* 60 * 60 * 1000) return 'Sleep can\'t be longer than 24 hours.';
     if(SleepService.AllOvernightData.some(d => sameDay(d.sleepEnd, wake))){
       return 'You already logged sleep for this morning.';
     }
