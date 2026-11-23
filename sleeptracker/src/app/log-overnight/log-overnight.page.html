@@ -24,19 +24,19 @@
 
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
-      <ion-datetime id="bedtime" [max]="maxTime" [(ngModal)]="bedtime"></ion-datetime>
+      <ion-datetime id="bedtime" [max]="maxTime" [(ngModel)]="bedtime"></ion-datetime>
     </ng-template>
   </ion-modal>
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
-      <ion-datetime id="waketime" [max]="maxTime" [(ngModal)]="wakeTime"></ion-datetime>
+      <ion-datetime id="waketime" [max]="maxTime" [(ngModel)]="wakeTime"></ion-datetime>
     </ng-template>
   </ion-modal>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" [disabeled]="error !== ''"
+    <ion-button expand="block" [disabled]="error !== ''"
     (click)="save()">Save</ion-button>
   </ion-toolbar>
 </ion-footer>
