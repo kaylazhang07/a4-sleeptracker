@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log last night</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-label>Went to bed</ion-label>
+      <ion-datetime-button datetime="bedtime" slot="end"></ion-datetime-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Woke up</ion-label>
+      <ion-datetime-button datetime="waketime" slot="end"></ion-datetime-button>
+    </ion-item>
+  </ion-list>
+  @if (error) {
+    <ion-note color="danger" class="ion-padding-horizontal">{{ error}}</ion-note>
+  }
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="bedtime" [max]="maxTime" [(ngModal)]="bedtime"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="waketime" [max]="maxTime" [(ngModal)]="wakeTime"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" [disabeled]="error !== ''"
+    (click)="save()">Save</ion-button>
+  </ion-toolbar>
+</ion-footer>
+  

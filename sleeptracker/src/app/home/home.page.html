@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Sleep Tracker</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Sleep Tracker</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button expand="block" routerLink="/log-overnight">Log last night</ion-button>
+  <ion-list>
+    @for (entry of entries; track entry.id){
+      <ion-item>
+        <ion-label>
+          <h2>{{ entry.summaryString() }}</h2>
+          <p>{{ entry.dateString() }}</p>
+        </ion-label>
+      </ion-item>
+    } @empty {
+      <ion-item>
+        <ion-label>No logs yet</ion-label>
+      </ion-item>
+    }
+  </ion-list>
 </ion-content>
