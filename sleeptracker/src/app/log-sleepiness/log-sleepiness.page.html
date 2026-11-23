@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log sleepiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list [inset]="true">
+    <ion-radio-group [(ngModel)]="level">
+      @for (n of levels; track n){
+        <ion-item>
+          <ion-radio [value]="n" labelPlacement="end" justify="start">
+            <strong>{{ n }}</strong> -- {{ scale[n] }}
+          </ion-radio>
+        </ion-item>
+      }
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-label>When</ion-label>
+      <ion-datetime-button datetime="time" slot="end"></ion-datetime-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="time" [max]="maxTime" [(ngModel)]="time"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" [disabled]="!level"
+    (click)="save()">Save</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'log-overnight',
     loadComponent: () => import('./log-overnight/log-overnight.page').then( m => m.LogOvernightPage)
   },
+  {
+    path: 'log-sleepiness',
+    loadComponent: () => import('./log-sleepiness/log-sleepiness.page').then( m => m.LogSleepinessPage)
+  },
 ];
