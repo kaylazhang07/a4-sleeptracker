@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon,
 } from '@ionic/angular/standalone';
@@ -21,16 +21,24 @@ export class HomePage {
   lastOvernight?: OvernightSleepData;
   latestSleepiness?: StanfordSleepinessData;
 
-  constructor(public sleepService: SleepService) {
+  constructor(public sleepService: SleepService, private router: Router) {
     addIcons({ moonOutline, sunnyOutline, bedOutline, addOutline });
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd && e.urlAfterRedirects.startsWith('/home')){
+        this.refresh();
+      }
+    });
   }
 
+
   async ionViewWillEnter() {
+    await this.refresh();
+  }
+
+  async refresh(){
     await this.sleepService.loadData();
-    this.lastOvernight = [...SleepService.AllOvernightData]
-      .sort((a, b) => b.sleepEnd.getTime() - a.sleepEnd.getTime())[0];
-    this.latestSleepiness = [...SleepService.AllSleepinessData]
-      .sort((a, b) => b.loggedAt.getTime() - a.loggedAt.getTime())[0];
+    this.lastOvernight = [...SleepService.AllOvernightData].sort((a,b) => b.sleepEnd.getTime() - a.sleepEnd.getTime())[0];
+    this.latestSleepiness = [...SleepService.AllSleepinessData].sort((a,b) => b.loggedAt.getTime() - a.loggedAt.getTime())[0];
   }
 
   get greeting(): string {
