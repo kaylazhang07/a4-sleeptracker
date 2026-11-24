@@ -35,30 +35,35 @@
 
 
 7. Did you design your app specifically for iOS or Android, or both?
-
+We prioritized iOS by using iOS-style large titles, inset lists, back buttons, and date pickers that open in a pop-up.
+Since we used standard Ionic components, the app still adapts for Android.
 
 
 8. How can a person log overnight sleep in your app? Why did you choose to support logging overnight sleep in this way?
-
+From the homescreen, the user taps "Log last night" and confirms their bedtime and wake-up time, which are prefilled with a typical night (11PM to 7 AM).
+Since our users log int he morning, pre-fileld times mean most logs only need a small adjustments, and time pickers prevent typing errors.
 
 
 9. How can a person log sleepiness during the day in your app? Why did you choose to support logging sleepiness in this way?
 
-
+The user taps "Log sleepiness," picks one of the seven Stanford Sleepiness Scale levels (with descritpions), and the time defaults to now but can be changed.
+Showing full descritpions help new users choose acccurately and defaulting to now keeps logging quick.
 
 10. How can a person view the data they logged in your app? Why did you choose to support viewing logged data in this way?
 
 
 
 11. Which feature choose--using a native device resource, backing up logged data, or both?
-
+Backing up logged data
 
 
 12. If you used a native device resource, what feature did you add? How does this feature change the app's experience for a user?
-
+N/A used logged data instead
 
 
 13. If you backed up logged data, where does it back up to?
-
+Logs are saved with Capacitor Preferences, which uses local storage in the browser and permanenet native storage ona  device. 
+Data saves after every change and reloads when the app opens and is still there after closing or refreshing.
 
 14. How does your app implement or follow principles of good mobile design?
+

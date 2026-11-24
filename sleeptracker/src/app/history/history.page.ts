@@ -79,7 +79,6 @@ export class HistoryPage {
     await slider.close();
     const alert = await this.alertCtrl.create({
       header: 'Delete this log?',
-      message: 'This can\'t be undone.',
       buttons: [
         { text: 'Cancel', role: 'cancel' },
         {
@@ -88,7 +87,23 @@ export class HistoryPage {
           handler: async () => {
             await this.sleepService.deleteData(entry.id);
             this.refresh();
-            const toast = await this.toastCtrl.create({ message: 'Log deleted', duration: 1500 });
+            const toast = await this.toastCtrl.create({
+              message: 'Log deleted',
+              duration: 4000,
+              buttons: [{
+                text: 'Undo',
+                handler: async () => {
+                  if(entry instanceof OvernightSleepData){
+                    await this.sleepService.logOvernightData(entry);
+
+                  }
+                  else if (entry instanceof StanfordSleepinessData){
+                    await this.sleepService.logSleepinessData(entry);
+                  }
+                  this.refresh();
+                },
+              }],
+             });
             await toast.present();
           },
         },
