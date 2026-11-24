@@ -1,0 +1,10 @@
+ion-tab-bar {
+  --background: var(--app-surface);
+  --border: 1px solid var(--app-hairline);
+  padding-top: 4px;
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+}

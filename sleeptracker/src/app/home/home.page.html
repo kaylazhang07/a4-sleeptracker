@@ -5,26 +5,46 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Sleep Tracker</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <p class="greeting">{{ greeting }}</p>
+  <h1 class="headline">How did you sleep?</h1>
 
-  <ion-button expand="block" routerLink="/log-overnight">Log last night</ion-button>
-  <ion-button expand="block" fill="outline" routerLink="/log-sleepiness">Log sleepiness</ion-button>
-  <ion-list>
-    @for (entry of entries; track entry.id){
-      <ion-item>
-        <ion-label>
-          <h2>{{ entry.summaryString() }}</h2>
-          <p>{{ entry.dateString() }}</p>
-        </ion-label>
-      </ion-item>
-    } @empty {
-      <ion-item>
-        <ion-label>No logs yet</ion-label>
-      </ion-item>
+  <!-- Last night -->
+  <div class="card sleep-card">
+    <div class="card-head">
+      <ion-icon name="moon-outline"></ion-icon>
+      <span>Last night</span>
+    </div>
+    @if (lastOvernight) {
+      <div class="stat">{{ lastOvernight.summaryString() }}</div>
+      <div class="sub">{{ lastOvernight.dateString() }}</div>
+    } @else {
+      <div class="stat muted">No sleep logged yet</div>
+      <div class="sub">Log last night to see it here.</div>
     }
-  </ion-list>
+  </div>
+
+  <!-- Latest sleepiness -->
+  <div class="card sleepiness-card">
+    <div class="card-head">
+      <ion-icon name="sunny-outline"></ion-icon>
+      <span>Latest sleepiness</span>
+    </div>
+    @if (latestSleepiness) {
+      <div class="stat">{{ latestSleepiness.summaryString() }}</div>
+      <div class="sub">{{ latestSleepiness.dateString() }}</div>
+    } @else {
+      <div class="stat muted">Nothing logged yet</div>
+      <div class="sub">Rate how sleepy you feel right now.</div>
+    }
+  </div>
+
+  <!-- Quick actions -->
+  <ion-button expand="block" class="action" routerLink="/log-overnight">
+    <ion-icon slot="start" name="bed-outline"></ion-icon>
+    Log last night's sleep
+  </ion-button>
+  <ion-button expand="block" fill="outline" class="action" routerLink="/log-sleepiness">
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    Log sleepiness
+  </ion-button>
 </ion-content>
