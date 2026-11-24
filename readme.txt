@@ -66,4 +66,4 @@ Logs are saved with Capacitor Preferences, which uses local storage in the brows
 Data saves after every change and reloads when the app opens and is still there after closing or refreshing.
 
 14. How does your app implement or follow principles of good mobile design?
-Error prevention: Save is disabeled until a log is valid (wake-up must be after bedtime and not in future, only one log per morning, sleepiness level is required) and time pickers can't select future times. Each save is confirmed with a toast and logging pages use standard iOS back buttons
+Error prevention: Save is disabeled until a log is valid (wake-up must be after bedtime and not in future, only one log per morning, sleepiness level is required) and time pickers can't select future times. Each save is confirmed with a toast and logging pages use standard iOS back buttons, when you delete a log there's a toast message that pops up with an undo button
