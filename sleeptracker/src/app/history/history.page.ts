@@ -8,7 +8,7 @@ import {
   IonRadioGroup, IonRadio, AlertController, ToastController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { createOutline, trashOutline, moonOutline, sunnyOutline, timeOutline } from 'ionicons/icons';
+import { createOutline, trashOutline, moonOutline, sunnyOutline, timeOutline, chevronBackOutline } from 'ionicons/icons';
 import { SleepService } from '../services/sleep.service';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
@@ -54,7 +54,7 @@ export class HistoryPage {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
   ) {
-    addIcons({ createOutline, trashOutline, moonOutline, sunnyOutline, timeOutline });
+    addIcons({ createOutline, trashOutline, moonOutline, sunnyOutline, timeOutline, chevronBackOutline });
   }
 
   async ionViewWillEnter() {

@@ -6,8 +6,28 @@ ion-segment {
   --background: var(--app-surface-2);
 }
 
+.swipe-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 16px 8px;
+  font-size: 0.8rem;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 14px;
+  }
+}
+
 ion-list {
   background: transparent;
+}
+
+.swipe-cue {
+  color: var(--ion-color-medium);
+  opacity: 0.4;
+  font-size: 18px;
 }
 
 ion-item-sliding ion-item {
