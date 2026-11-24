@@ -77,3 +77,14 @@ Data saves after every change and reloads when the app opens and is still there 
 
 14. How does your app implement or follow principles of good mobile design?
 Useful initial view: the Home tab opens on a dashboard summarizing last night's sleep and the most recent sleepiness rating instead of a blank list. Uh-oh button: deleting a log shows an "Undo" action in a toast so a mistaken delete is easy to recover, and delete first asks for confirmation. Error prevention: logging uses date/time pickers and a tap-to-select scale rather than free text, with validation that stops wake times before bedtime, future times, sleep over 24 hours, and double-logging the same morning. Platform conventions: we follow iOS patterns (large collapsing titles, a bottom tab bar, back buttons, pop-up date pickers, and swipe-to-reveal edit/delete), and a consistent "night sky" indigo theme with light/dark support ties the screens together.
+
+Demo timestamps:
+0:00 Initial view (empty Home)
+0:02 Log over night sleep (pre-filled times); 0:15 saved, Home updates
+0:23 Error Prevention: already logged this mroning, over 24 hours, wake-up before bedtime
+0:48 Log an earlier night (Nov 20)
+0:57 Log sleepiness (save disabeled until a level is picked); 1:02 Home updates
+1:04 History tab with All/ Sleep / Sleepiness
+1:13 Edit an overnight log; 1:25 edit a sleepiness log
+1:30 Delete with Undo ("uh-oh" button)
+1:41 Page reload: all data is still there (saved with Capacitor Preferences)
