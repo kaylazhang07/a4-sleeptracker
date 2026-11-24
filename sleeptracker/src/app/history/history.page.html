@@ -19,6 +19,13 @@
     </ion-segment>
   </div>
 
+  @if (entries.length) {
+    <p class="swipe-hint">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Swipe a log left to edit or delete
+    </p>
+  }
+
   <ion-list>
     @for (entry of entries; track entry.id) {
       <ion-item-sliding #slider>
@@ -32,6 +39,7 @@
             <h2>{{ entry.summaryString() }}</h2>
             <p>{{ entry.dateString() }}</p>
           </ion-label>
+          <ion-icon slot="end" name="chevron-back-outline" class="swipe-cue" aria-hidden="true"></ion-icon>
         </ion-item>
 
         <ion-item-options side="end">
