@@ -1,27 +1,68 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.greeting {
+  color: var(--ion-color-medium);
+  margin: 4px 0 0;
+  font-size: 0.95rem;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.headline {
+  margin: 0 0 20px;
+  font-size: 1.7rem;
+  font-weight: 700;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.card {
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+  background: var(--app-surface);
+  border: 1px solid var(--app-hairline);
 }
 
-#container a {
-  text-decoration: none;
+.sleep-card {
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary-shade));
+  color: #fff;
+  border: none;
+}
+
+.sleepiness-card {
+  background: var(--app-surface);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+.stat {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+
+  &.muted {
+    font-size: 1.15rem;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+}
+
+.sub {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+.action {
+  margin-top: 12px;
+  --border-radius: 14px;
+  height: 52px;
+  font-weight: 600;
 }

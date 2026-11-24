@@ -25,6 +25,24 @@ export class SleepService {
 		await this.saveData();
 	}
 
+	public async updateOvernightData(id:string, sleepStart:Date, sleepEnd:Date){
+		const entry = SleepService.AllOvernightData.find(d => d.id === id);
+		if (entry) {
+			entry.sleepStart = sleepStart;
+			entry.sleepEnd = sleepEnd;
+			await this.saveData();
+		}
+	}
+
+	public async updateSleepinessData(id:string, loggedValue:number, loggedAt:Date){
+		const entry = SleepService.AllSleepinessData.find(d => d.id === id);
+		if (entry) {
+			entry.loggedValue = loggedValue;
+			entry.loggedAt = loggedAt;
+			await this.saveData();
+		}
+	}
+
 	public async deleteData(id:string){
 		SleepService.AllSleepData = SleepService.AllSleepData.filter(d => d.id !== id);
 		SleepService.AllOvernightData = SleepService.AllOvernightData.filter(d => d.id !== id);
